@@ -48,12 +48,12 @@ export default function Footer() {
           <p>Your one‑stop shop for the best products at great prices.</p>
         </div>
         <div>
-          {footerInfo.map((info) => (
-            <div>
+          {footerInfo.map((info, index) => (
+            <div key={index}>
               <h2>{info.header}</h2>
               <ul>
-                {info.list.map((list) => (
-                  <li>
+                {info.list.map((list, index) => (
+                  <li key={index}>
                     <Link>{list}</Link>
                   </li>
                 ))}
