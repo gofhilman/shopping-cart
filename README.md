@@ -1,3 +1,7 @@
-# vite-react-template
+# ShopShop
 
-Vite React + my personal preferential tool template
+A mock shopping website
+
+## To Do
+
+- Create page components
