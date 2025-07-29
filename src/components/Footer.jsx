@@ -8,6 +8,7 @@ import {
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
+import { Separator } from "./ui/separator";
 
 export default function Footer() {
   const footerInfo = [
@@ -61,6 +62,8 @@ export default function Footer() {
           ))}
         </div>
       </article>
+      <Separator />
+      <p>&copy; 2025 ShopShop. All right reserved.</p>
     </div>
   );
 }
