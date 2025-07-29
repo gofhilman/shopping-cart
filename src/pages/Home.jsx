@@ -10,20 +10,25 @@ import {
 export default function Home() {
   return (
     <div>
-      <div>
-        <Card>
+      <Card>
+        <div>
           <CardHeader>
             <CardTitle>Bring your wishlist to life</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>Explore the latest trends and shop your favorite products now.</p>
+            <p>
+              Explore the latest trends and shop your favorite products now.
+            </p>
           </CardContent>
           <CardFooter>
             <Button>Shop now</Button>
           </CardFooter>
-        </Card>
-      </div>
-      <img src="/shopshop.png" alt="ShopShop cover image" />
+        </div>
+        <img src="/shopshop.png" alt="ShopShop cover image" />
+      </Card>
+      <article>
+        
+      </article>
     </div>
   );
 }

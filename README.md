@@ -4,4 +4,4 @@ A mock shopping website
 
 ## To Do
 
-- Create page components
+- Create product card
