@@ -1,0 +1,23 @@
+// HOW TO USE
+// const products = [{id, title, price, description, category, image}, ...];
+
+const USD2IDR = 20000;
+
+export default async function getProducts(url) {
+  const response = await fetch(url, { mode: "cors" });
+  if (!response.ok) throw new Error(`Response status: ${response.status}`);
+  const data = await response.json();
+  return data.map((item) => {
+    item.price = item.price * USD2IDR;
+    return item;
+  });
+}
+
+// let productData;
+// try {
+//   productData = fetchProductData();
+// } catch (error) {
+//   console.error("Fetch product data failed:", error.message);
+// }
+
+// getProducts("https://fakestoreapi.com/products").then((data) => console.log(data));
