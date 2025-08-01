@@ -10,9 +10,11 @@ function App() {
   const products = useProductData();
 
   return (
-    <MainLayout cartLength={cart.length}>
+    <MainLayout
+      itemQuantity={cart.reduce((acc, item) => acc + item.quantity, 0)}
+    >
       {products ? (
-        <Outlet context={[cart, setCart, products]} />
+        <Outlet context={{ cart, setCart, products }} />
       ) : (
         <LoadingSpinner />
       )}

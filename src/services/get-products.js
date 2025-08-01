@@ -14,4 +14,4 @@ export default async function getProducts() {
   });
 }
 
-// getProducts().then((data) => console.log(data));
+getProducts().then((data) => console.log(data));

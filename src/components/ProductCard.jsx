@@ -4,7 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import { Button } from "./ui/button";
 
 export default function ProductCard({ product }) {
-  const [cart, setCart] = useOutletContext();
+  const { cart, setCart } = useOutletContext();
   const productQty = cart.find((item) => item.id === product.id)?.quantity ?? 0;
   const handleAddToCart = () => {
     const updatedCart = cart.concat(product);
@@ -21,10 +21,12 @@ export default function ProductCard({ product }) {
   };
   const handleDecreaseQty = () => {
     setCart(
-      cart.map((item) => {
-        if (item.id === product.id) item.quantity--;
-        return item;
-      }),
+      cart
+        .map((item) => {
+          if (item.id === product.id) item.quantity--;
+          return item;
+        })
+        .filter((item) => item.quantity !== 0),
     );
   };
 

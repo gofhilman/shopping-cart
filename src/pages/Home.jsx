@@ -1,3 +1,4 @@
+import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -6,8 +7,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useOutletContext } from "react-router-dom";
 
 export default function Home() {
+  const { products } = useOutletContext();
+  const featuredProducts = [products[0], products[1], products[2]];
+  const categories = [];
+  for (const item of products) {
+    if (!categories.includes(item.category)) categories.push(item.category);
+  }
+
   return (
     <div>
       <Card>
@@ -28,7 +37,22 @@ export default function Home() {
       </Card>
       <article>
         <h2>Featured Products</h2>
+        {featuredProducts.map((item) => (
+          <ProductCard key={item.id} product={item} />
+        ))}
       </article>
+      <article>
+        <h2>Shop by Category</h2>
+        {categories.map((category, index) => (
+          <div key={index}>
+            <Button>{category[0].toUpperCase() + category.slice(1)}</Button>
+          </div>
+        ))}
+      </article>
+      <Card>
+        <h2>Get 20% off for your first order</h2>
+        <Button>Start shopping</Button>
+      </Card>
     </div>
   );
 }

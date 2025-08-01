@@ -1,10 +1,10 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-export default function MainLayout({ children, cartLength }) {
+export default function MainLayout({ children, itemQuantity }) {
   return (
     <div>
-      <Header cartLength={cartLength} />
+      <Header itemQuantity={itemQuantity} />
       {children}
       <Footer />
     </div>
