@@ -2,8 +2,9 @@
 // const products = [{id, title, price, description, category, image}, ...];
 
 const USD2IDR = 20000;
+const url = "https://fakestoreapi.com/products";
 
-export default async function getProducts(url) {
+export default async function getProducts() {
   const response = await fetch(url, { mode: "cors" });
   if (!response.ok) throw new Error(`Response status: ${response.status}`);
   const data = await response.json();
@@ -20,4 +21,4 @@ export default async function getProducts(url) {
 //   console.error("Fetch product data failed:", error.message);
 // }
 
-// getProducts("https://fakestoreapi.com/products").then((data) => console.log(data));
+// getProducts().then((data) => console.log(data));

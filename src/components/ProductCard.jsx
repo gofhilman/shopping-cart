@@ -1,7 +1,20 @@
 import formatRupiah from "@/lib/format-rupiah";
 import { Card, CardContent, CardFooter } from "./ui/card";
+import { useOutletContext } from "react-router-dom";
+import { Button } from "./ui/button";
 
 export default function ProductCard({ product }) {
+  const [cart, setCart] = useOutletContext();
+  const productQty = cart.find((item) => item.id === product.id)?.quantity ?? 0;
+  const handleAddToCart = () => {
+    const updatedCart = cart.concat(product);
+    updatedCart.find((item) => item.id === product.id).quantity = 1;
+    setCart(updatedCart);
+  };
+  const handleIncreaseQty = () => {
+    setCart()
+  }
+
   return (
     <Card>
       <CardContent>
@@ -10,7 +23,15 @@ export default function ProductCard({ product }) {
         <p>{formatRupiah(product.price)}</p>
       </CardContent>
       <CardFooter>
-        {/* WIP */}
+        {productQty ? (
+          <div>
+            <Button>-</Button>
+            <p>{productQty}</p>
+            <Button onClick={handleIncreaseQty}>+</Button>
+          </div>
+        ) : (
+          <Button onClick={handleAddToCart}>Add to cart</Button>
+        )}
       </CardFooter>
     </Card>
   );
