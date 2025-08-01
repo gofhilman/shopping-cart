@@ -12,8 +12,21 @@ export default function ProductCard({ product }) {
     setCart(updatedCart);
   };
   const handleIncreaseQty = () => {
-    setCart()
-  }
+    setCart(
+      cart.map((item) => {
+        if (item.id === product.id) item.quantity++;
+        return item;
+      }),
+    );
+  };
+  const handleDecreaseQty = () => {
+    setCart(
+      cart.map((item) => {
+        if (item.id === product.id) item.quantity--;
+        return item;
+      }),
+    );
+  };
 
   return (
     <Card>
@@ -25,7 +38,7 @@ export default function ProductCard({ product }) {
       <CardFooter>
         {productQty ? (
           <div>
-            <Button>-</Button>
+            <Button onClick={handleDecreaseQty}>-</Button>
             <p>{productQty}</p>
             <Button onClick={handleIncreaseQty}>+</Button>
           </div>

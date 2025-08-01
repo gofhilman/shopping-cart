@@ -27,7 +27,7 @@ export default function Home() {
         <img src="/shopshop.png" alt="ShopShop cover image" />
       </Card>
       <article>
-        
+        <h2>Featured Products</h2>
       </article>
     </div>
   );

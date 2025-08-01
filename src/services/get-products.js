@@ -14,11 +14,4 @@ export default async function getProducts() {
   });
 }
 
-// let productData;
-// try {
-//   productData = fetchProductData();
-// } catch (error) {
-//   console.error("Fetch product data failed:", error.message);
-// }
-
 // getProducts().then((data) => console.log(data));
