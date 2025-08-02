@@ -7,15 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import extractCategories from "@/lib/extract-categories";
 import { useOutletContext } from "react-router-dom";
 
 export default function Home() {
   const { products } = useOutletContext();
   const featuredProducts = [products[0], products[1], products[2]];
-  const categories = [];
-  for (const item of products) {
-    if (!categories.includes(item.category)) categories.push(item.category);
-  }
+  const categoryNames = extractCategories(products);
 
   return (
     <div>
@@ -43,9 +41,9 @@ export default function Home() {
       </article>
       <article>
         <h2>Shop by Category</h2>
-        {categories.map((category, index) => (
+        {categoryNames.map((name, index) => (
           <div key={index}>
-            <Button>{category[0].toUpperCase() + category.slice(1)}</Button>
+            <Button>{name[0].toUpperCase() + name.slice(1)}</Button>
           </div>
         ))}
       </article>

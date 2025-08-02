@@ -9,17 +9,26 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import extractCategories from "@/lib/extract-categories";
 import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 
+const DISPLAY_NUMBER = 6;
+
 export default function Shop() {
   const { products } = useOutletContext();
-  const categoryNames = [];
-  for (const item of products) {
-    if (!categoryNames.includes(item.category))
-      categoryNames.push(item.category);
-  }
+  const categoryNames = extractCategories(products);
   const [categories, setCategories] = useState(categoryNames);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const filteredProducts = products.filter((item) =>
+    categories.includes(item.category),
+  );
+  const compartedProducts = filteredProducts.reduce((acc, item, index) => {
+    if (index % DISPLAY_NUMBER === 0) acc.push([]);
+    acc[Math.floor(index / DISPLAY_NUMBER)].push(item);
+    return acc;
+  }, []);
   const handleCheckbox = (name) => {
     if (categories.includes(name)) {
       setCategories(categories.filter((item) => item !== name));
@@ -68,4 +77,8 @@ export default function Shop() {
       </div>
     </div>
   );
+}
+
+function SPAPagination({ currentPage, setCurrentPage }) {
+  
 }
