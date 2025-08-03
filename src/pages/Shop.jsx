@@ -1,3 +1,4 @@
+import ProductCard from "@/components/ProductCard";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,6 +10,15 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 import extractCategories from "@/lib/extract-categories";
 import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
@@ -73,12 +83,67 @@ export default function Shop() {
             ))}
           </CardContent>
         </Card>
-        <div></div>
+        <div>
+          <div>
+            {compartedProducts[currentPage - 1].map((item) => (
+              <ProductCard key={item.id} product={item} />
+            ))}
+          </div>
+          <SPAPagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            maxPage={compartedProducts.length}
+          />
+        </div>
       </div>
     </div>
   );
 }
 
-function SPAPagination({ currentPage, setCurrentPage }) {
-  
+function SPAPagination({ currentPage, setCurrentPage, maxPage }) {
+  return (
+    <Pagination>
+      <PaginationContent>
+        {currentPage > 1 && (
+          <>
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => setCurrentPage(currentPage - 1)}
+              />
+            </PaginationItem>
+            {currentPage > 2 && (
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            )}
+            <PaginationItem>
+              <PaginationLink onClick={() => setCurrentPage(currentPage - 1)}>
+                {currentPage - 1}
+              </PaginationLink>
+            </PaginationItem>
+          </>
+        )}
+        <PaginationItem>
+          <PaginationLink isActive>{currentPage}</PaginationLink>
+        </PaginationItem>
+        {currentPage < maxPage && (
+          <>
+            <PaginationItem>
+              <PaginationLink onClick={() => setCurrentPage(currentPage + 1)}>
+                {currentPage + 1}
+              </PaginationLink>
+            </PaginationItem>
+            {maxPage - currentPage > 1 && (
+              <PaginationItem>
+                <PaginationEllipsis />
+              </PaginationItem>
+            )}
+            <PaginationItem>
+              <PaginationNext onClick={() => setCurrentPage(currentPage + 1)} />
+            </PaginationItem>
+          </>
+        )}
+      </PaginationContent>
+    </Pagination>
+  );
 }
