@@ -1,16 +1,8 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import formatRupiah from "@/lib/format-rupiah";
 import { useState } from "react";
-import { Link, useOutletContext, useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 
 export default function Product() {
   const { cart, setCart, products } = useOutletContext();
@@ -41,53 +33,34 @@ export default function Product() {
   };
 
   return (
-    <div>
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link to="/">Home</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Product</BreadcrumbPage>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>{product.title}</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-      <article>
-        <img src={product.image} alt="Product image" />
+    <article>
+      <img src={product.image} alt="Product image" />
+      <div>
+        <h2>{product.title}</h2>
+        <p>{formatRupiah(product.price)}</p>
+        <p>Category: {product.category}</p>
+        <p>{product.description}</p>
         <div>
-          <h2>{product.title}</h2>
-          <p>{formatRupiah(product.price)}</p>
-          <p>Category: {product.category}</p>
-          <p>{product.description}</p>
           <div>
-            <div>
-              <Button
-                onClick={() => {
-                  if (productQty > 0) setProductQty(productQty - 1);
-                }}
-              >
-                -
-              </Button>
-              <Input
-                type="number"
-                value={productQty}
-                onChange={(event) => setProductQty(event.target.value)}
-                min="0"
-                step="1"
-              />
-              <Button onClick={() => setProductQty(productQty + 1)}>+</Button>
-            </div>
-            <Button onClick={handleAddToCart}>Add to cart</Button>
+            <Button
+              onClick={() => {
+                if (productQty > 0) setProductQty(productQty - 1);
+              }}
+            >
+              -
+            </Button>
+            <Input
+              type="number"
+              value={productQty}
+              onChange={(event) => setProductQty(event.target.value)}
+              min="0"
+              step="1"
+            />
+            <Button onClick={() => setProductQty(productQty + 1)}>+</Button>
           </div>
+          <Button onClick={handleAddToCart}>Add to cart</Button>
         </div>
-      </article>
-    </div>
+      </div>
+    </article>
   );
 }

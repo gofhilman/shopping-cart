@@ -1,12 +1,4 @@
 import ProductCard from "@/components/ProductCard";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -21,7 +13,7 @@ import {
 } from "@/components/ui/pagination";
 import extractCategories from "@/lib/extract-categories";
 import { useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 const DISPLAY_NUMBER = 6;
 
@@ -49,52 +41,37 @@ export default function Shop() {
 
   return (
     <div>
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link to="/">Home</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Shop</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
+      <Card>
+        <CardHeader>
+          <CardTitle>Category</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {categoryNames.map((name, index) => (
+            <div key={index}>
+              <Input
+                type="checkbox"
+                id={index}
+                checked={categories.includes(name)}
+                onChange={() => handleCheckbox(name)}
+              ></Input>
+              <Label htmlFor={index}>
+                {name[0].toUpperCase() + name.slice(1)}
+              </Label>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
       <div>
-        <Card>
-          <CardHeader>
-            <CardTitle>Category</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {categoryNames.map((name, index) => (
-              <div key={index}>
-                <Input
-                  type="checkbox"
-                  id={index}
-                  checked={categories.includes(name)}
-                  onChange={() => handleCheckbox(name)}
-                ></Input>
-                <Label htmlFor={index}>
-                  {name[0].toUpperCase() + name.slice(1)}
-                </Label>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
         <div>
-          <div>
-            {compartedProducts[currentPage - 1].map((item) => (
-              <ProductCard key={item.id} product={item} />
-            ))}
-          </div>
-          <SPAPagination
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            maxPage={compartedProducts.length}
-          />
+          {compartedProducts[currentPage - 1].map((item) => (
+            <ProductCard key={item.id} product={item} />
+          ))}
         </div>
+        <SPAPagination
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+          maxPage={compartedProducts.length}
+        />
       </div>
     </div>
   );

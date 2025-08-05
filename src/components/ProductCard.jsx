@@ -32,15 +32,17 @@ export default function ProductCard({ product }) {
 
   return (
     <Card>
-      <Link
-        to={"/product/" + encodeURIComponent(product.title + "-" + product.id)}
-      >
-        <CardContent>
+      <CardContent>
+        <Link
+          to={
+            "/product/" + encodeURIComponent(product.title + "-" + product.id)
+          }
+        >
           <img src={product.image} alt="Product image" />
           <h3>{product.title}</h3>
           <p>{formatRupiah(product.price)}</p>
-        </CardContent>
-      </Link>
+        </Link>
+      </CardContent>
       <CardFooter>
         {productQty ? (
           <div>

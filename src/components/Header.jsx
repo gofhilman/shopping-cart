@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { MobileNav, DesktopNav } from "./HeaderNav";
 import { ShoppingCart } from "lucide-react";
 
@@ -7,8 +8,10 @@ export default function Header({ itemQuantity }) {
       <h1>ShopShop</h1>
       <DesktopNav />
       <div>
-        <ShoppingCart />
-        <p>{itemQuantity}</p>
+        <Link to="cart">
+          <ShoppingCart />
+          <p>{itemQuantity}</p>
+        </Link>
       </div>
       <MobileNav />
     </div>
