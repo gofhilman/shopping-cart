@@ -19,16 +19,14 @@ function MobileNav() {
         className="lg:hidden"
       ></DynamicIcon>
       {dialogOpen && (
-        <div>
-          <div>
-            <NavigationMenu
-              orientation="vertical"
-              className="[&[data-orientation=vertical]]:flex-col"
-            >
-              <MenuItems />
-            </NavigationMenu>
-            <Input type="search" placeholder="Search a product" />
-          </div>
+        <div className="absolute inset-x-0 top-full bg-white">
+          <NavigationMenu
+            orientation="vertical"
+            className="[&[data-orientation=vertical]]:flex-col"
+          >
+            <MenuItems />
+          </NavigationMenu>
+          <Input type="search" placeholder="Search a product" />
         </div>
       )}
     </>
