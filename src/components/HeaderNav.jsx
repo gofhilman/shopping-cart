@@ -19,8 +19,8 @@ function MobileNav() {
         className="lg:hidden"
       ></DynamicIcon>
       {dialogOpen && (
-        <div className="absolute inset-x-0 top-full flex flex-col items-end rounded-b-lg border-b-1 bg-white pr-6 pb-2 pl-15 shadow-[0px_5px_5px_-5px_rgba(0,0,0,0.75)]">
-          <NavigationMenu orientation="vertical" className="flex-col">
+        <div className="absolute inset-x-0 top-full flex flex-col items-end border-b-1 bg-white pr-6 pb-2 pl-15 shadow-[0px_5px_5px_-5px_rgba(0,0,0,0.75)]">
+          <NavigationMenu orientation="vertical" className="flex-col text-base">
             <MenuItems />
           </NavigationMenu>
           <Input

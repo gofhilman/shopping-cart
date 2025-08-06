@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import extractCategories from "@/lib/extract-categories";
-import { useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 
 export default function Home() {
   const { products } = useOutletContext();
@@ -16,36 +16,48 @@ export default function Home() {
   const categoryNames = extractCategories(products);
 
   return (
-    <div>
-      <Card>
+    <div className="px-12">
+      <Card className="bg-linear-to-br from-orange-300 to-amber-400">
         <div>
           <CardHeader>
-            <CardTitle>Bring your wishlist to life</CardTitle>
+            <CardTitle className="text-xl font-bold">
+              Bring your wishlist to life
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <p>
               Explore the latest trends and shop your favorite products now.
             </p>
           </CardContent>
-          <CardFooter>
-            <Button>Shop now</Button>
+          <CardFooter className="mt-4">
+            <Button>
+              <Link to="shop">Shop now</Link>
+            </Button>
           </CardFooter>
         </div>
-        <img src="/shopshop.png" alt="ShopShop cover image" />
+        <img src="/shopshop.png" alt="ShopShop cover image" className="px-6" />
       </Card>
-      <article>
-        <h2>Featured Products</h2>
-        {featuredProducts.map((item) => (
-          <ProductCard key={item.id} product={item} />
-        ))}
+      <article className="my-4">
+        <h2 className="py-5 text-center text-2xl font-bold">
+          Featured Products
+        </h2>
+        <div>
+          {featuredProducts.map((item) => (
+            <ProductCard key={item.id} product={item} />
+          ))}
+        </div>
       </article>
-      <article>
-        <h2>Shop by Category</h2>
-        {categoryNames.map((name, index) => (
-          <div key={index}>
-            <Button>{name[0].toUpperCase() + name.slice(1)}</Button>
-          </div>
-        ))}
+      <article className="my-4">
+        <h2 className="py-5 text-center text-2xl font-bold">
+          Shop by Category
+        </h2>
+        <div>
+          {categoryNames.map((name, index) => (
+            <div key={index}>
+              <Button>{name[0].toUpperCase() + name.slice(1)}</Button>
+            </div>
+          ))}
+        </div>
       </article>
       <Card>
         <h2>Get 20% off for your first order</h2>
