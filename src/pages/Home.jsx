@@ -51,17 +51,15 @@ export default function Home() {
         <h2 className="py-5 text-center text-2xl font-bold">
           Shop by Category
         </h2>
-        <div>
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-5">
           {categoryNames.map((name, index) => (
-            <div key={index}>
-              <Button>{name[0].toUpperCase() + name.slice(1)}</Button>
-            </div>
+            <Button key={index}>{name[0].toUpperCase() + name.slice(1)}</Button>
           ))}
         </div>
       </article>
-      <Card>
-        <h2>Get 20% off for your first order</h2>
-        <Button>Start shopping</Button>
+      <Card className="my-8 bg-neutral-800 text-white items-start px-6 gap-4">
+        <h2 className="text-xl font-bold">Get 20% off for your first order</h2>
+        <Button><Link to="shop">Start shopping</Link></Button>
       </Card>
     </div>
   );
