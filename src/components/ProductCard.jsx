@@ -31,27 +31,47 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <Card>
+    <Card className="gap-y-2 text-center">
       <CardContent>
         <Link
           to={
             "/product/" + encodeURIComponent(product.title + "-" + product.id)
           }
         >
-          <img src={product.image} alt="Product image" />
-          <h3>{product.title}</h3>
-          <p>{formatRupiah(product.price)}</p>
+          <img
+            src={product.image}
+            alt="Product image"
+            className="aspect-4/5 rounded-lg border-2 border-orange-300 object-contain object-center p-3"
+          />
+          <h3 className="text-lg font-bold">{product.title}</h3>
+          <p className="text-lg font-bold text-orange-400">
+            {formatRupiah(product.price)}
+          </p>
         </Link>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="justify-center">
         {productQty ? (
-          <div>
-            <Button onClick={handleDecreaseQty}>-</Button>
-            <p>{productQty}</p>
-            <Button onClick={handleIncreaseQty}>+</Button>
+          <div className="grid grid-cols-3 items-center">
+            <Button
+              className="rounded-r-none text-lg font-black"
+              onClick={handleDecreaseQty}
+            >
+              -
+            </Button>
+            <p className="border-t-2 border-b-2 border-black py-0.5 text-lg font-medium">
+              {productQty}
+            </p>
+            <Button
+              className="rounded-l-none text-lg font-black"
+              onClick={handleIncreaseQty}
+            >
+              +
+            </Button>
           </div>
         ) : (
-          <Button onClick={handleAddToCart}>Add to cart</Button>
+          <Button className="text-lg" onClick={handleAddToCart}>
+            Add to cart
+          </Button>
         )}
       </CardFooter>
     </Card>

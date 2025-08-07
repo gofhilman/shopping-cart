@@ -27,7 +27,7 @@ export default function Footer() {
   ];
 
   return (
-    <div className="bg-black px-12 pt-8 pb-4 text-white">
+    <div className="bg-neutral-950 px-12 pt-8 pb-4 text-white">
       <Card className="gap-3 bg-neutral-800 text-white">
         <CardHeader>
           <CardTitle className="text-xl font-bold">
