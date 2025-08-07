@@ -41,7 +41,7 @@ export default function Home() {
         <h2 className="py-5 text-center text-2xl font-bold">
           Featured Products
         </h2>
-        <div>
+        <div className="flex flex-col items-center justify-center gap-5">
           {featuredProducts.map((item) => (
             <ProductCard key={item.id} product={item} />
           ))}

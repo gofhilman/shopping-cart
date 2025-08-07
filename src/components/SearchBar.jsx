@@ -35,9 +35,9 @@ export default function SearchBar({ products, className }) {
         onChange={(event) => setSearchText(event.target.value)}
         className={className}
       />
-      <ul className="absolute inset-x-0 top-full max-h-50 overflow-y-auto border-b-1 bg-white pr-6 pb-2 pl-15 shadow-[0px_5px_5px_-5px_rgba(0,0,0,0.75)]">
-        {searchResult &&
-          searchResult.map((result) => (
+      {searchResult?.length > 0 && (
+        <ul className="absolute inset-x-0 top-full max-h-50 overflow-y-auto border-b-1 bg-white pr-6 pb-2 pl-15 shadow-[0px_5px_5px_-5px_rgba(0,0,0,0.75)]">
+          {searchResult.map((result) => (
             <li key={result.item.id} className="truncate py-0.5 text-lg">
               <Link
                 to={
@@ -49,7 +49,8 @@ export default function SearchBar({ products, className }) {
               </Link>
             </li>
           ))}
-      </ul>
+        </ul>
+      )}
     </div>
   );
 }
