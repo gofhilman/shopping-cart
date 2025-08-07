@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { MobileNav, DesktopNav } from "./HeaderNav";
 import { ShoppingCart } from "lucide-react";
 
-export default function Header({ itemQuantity }) {
+export default function Header({ itemQuantity, products }) {
   return (
     <div className="fixed flex w-full items-center gap-2 border-b-1 bg-white px-3 pt-4 pb-3 shadow-[0px_5px_5px_-5px_rgba(0,0,0,0.75)]">
       <h1 className="mr-auto text-2xl font-bold">
@@ -11,7 +11,7 @@ export default function Header({ itemQuantity }) {
           <span className="text-amber-400">Shop</span>
         </Link>
       </h1>
-      <DesktopNav />
+      <DesktopNav products={products} />
       <div>
         <Link to="cart" className="relative">
           <ShoppingCart className="mr-4" fill="black" />
@@ -20,7 +20,7 @@ export default function Header({ itemQuantity }) {
           </div>
         </Link>
       </div>
-      <MobileNav />
+      <MobileNav products={products} />
     </div>
   );
 }

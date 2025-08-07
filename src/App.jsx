@@ -12,6 +12,7 @@ function App() {
   return (
     <MainLayout
       itemQuantity={cart.reduce((acc, item) => acc + item.quantity, 0)}
+      products={products}
     >
       {products ? (
         <Outlet context={{ cart, setCart, products }} />

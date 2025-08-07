@@ -5,11 +5,11 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle,
 } from "./ui/navigation-menu";
-import { Input } from "./ui/input";
 import { useState } from "react";
 import { DynamicIcon } from "lucide-react/dynamic";
+import SearchBar from "./SearchBar";
 
-function MobileNav() {
+function MobileNav({ products }) {
   const [dialogOpen, setDialogOpen] = useState(false);
   return (
     <>
@@ -23,24 +23,20 @@ function MobileNav() {
           <NavigationMenu orientation="vertical" className="flex-col text-base">
             <MenuItems />
           </NavigationMenu>
-          <Input
-            type="search"
-            placeholder="Search a product"
-            className="my-2 px-0.5 text-right"
-          />
+          <SearchBar products={products} className="my-2 px-0.5 text-right" />
         </div>
       )}
     </>
   );
 }
 
-function DesktopNav() {
+function DesktopNav({ products }) {
   return (
     <div className="hidden lg:block">
       <NavigationMenu>
         <MenuItems />
       </NavigationMenu>
-      <Input type="search" placeholder="Search a product" />
+      <SearchBar products={products} />
     </div>
   );
 }
