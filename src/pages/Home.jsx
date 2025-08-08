@@ -58,7 +58,7 @@ export default function Home() {
         </div> */}
         <Carousel
           plugins={[plugin.current]}
-          className="w-full max-w-xs"
+          className="z-0 w-full max-w-xs"
           onMouseEnter={plugin.current.stop}
           onMouseLeave={plugin.current.reset}
         >
