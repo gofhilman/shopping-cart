@@ -33,19 +33,28 @@ export default function Product() {
   };
 
   return (
-    <article>
-      <img src={product.image} alt="Product image" />
-      <div>
-        <h2>{product.title}</h2>
-        <p>{formatRupiah(product.price)}</p>
-        <p>Category: {product.category}</p>
-        <p>{product.description}</p>
+    <article className="flex flex-col gap-y-5 pb-7">
+      <img
+        src={product.image}
+        alt="Product image"
+        className="rounded-lg border-2 border-orange-300 object-contain object-center p-3"
+      />
+      <div className="flex flex-col gap-y-2">
+        <h2 className="text-lg/6 font-bold">{product.title}</h2>
+        <p className="text-lg font-bold text-orange-400">
+          {formatRupiah(product.price)}
+        </p>
+        <p className="text-sm font-medium text-neutral-700">
+          Category: {product.category}
+        </p>
+        <p className="leading-5.5">{product.description}</p>
         <div>
-          <div>
+          <div className="grid grid-cols-3 items-center">
             <Button
               onClick={() => {
                 if (productQty > 0) setProductQty(productQty - 1);
               }}
+              className="rounded-r-none text-lg font-black"
             >
               -
             </Button>
@@ -56,9 +65,16 @@ export default function Product() {
               min="0"
               step="1"
             />
-            <Button onClick={() => setProductQty(productQty + 1)}>+</Button>
+            <Button
+              onClick={() => setProductQty(productQty + 1)}
+              className="rounded-l-none text-lg font-black"
+            >
+              +
+            </Button>
           </div>
-          <Button onClick={handleAddToCart}>Add to cart</Button>
+          <Button onClick={handleAddToCart} className="text-lg">
+            Add to cart
+          </Button>
         </div>
       </div>
     </article>
