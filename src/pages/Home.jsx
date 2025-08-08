@@ -20,7 +20,10 @@ import {
 
 export default function Home() {
   const { products, categoryNames, setCategories } = useOutletContext();
-  const featuredProducts = [products[0], products[1], products[2]];
+  const featuredProducts = [];
+  products.forEach((item, index) => {
+    if (index % 3 === 0) featuredProducts.push(item);
+  });
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (

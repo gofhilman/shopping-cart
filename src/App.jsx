@@ -4,11 +4,13 @@ import { Outlet } from "react-router-dom";
 import { useState } from "react";
 import useProductData from "./hooks/use-product-data";
 import { LoadingSpinner } from "./components/ui/loading-spinner";
+import scrollToTop from "./hooks/scroll-to-top";
 
 function App() {
   const [cart, setCart] = useState([]);
   const { products, categoryNames, categories, setCategories } =
     useProductData();
+  scrollToTop();
 
   return (
     <div>

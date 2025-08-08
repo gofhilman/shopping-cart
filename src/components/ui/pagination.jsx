@@ -54,7 +54,7 @@ function PaginationLink({
       className={cn(buttonVariants({
         variant: isActive ? "outline" : "ghost",
         size,
-      }), className)}
+      }), className) + " text-xl"}
       {...props} />
   );
 }
@@ -69,7 +69,7 @@ function PaginationPrevious({
       size="default"
       className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
       {...props}>
-      <ChevronLeftIcon />
+      <ChevronLeftIcon className="size-5" />
       <span className="hidden sm:block">Previous</span>
     </PaginationLink>
   );
@@ -86,7 +86,7 @@ function PaginationNext({
       className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
       {...props}>
       <span className="hidden sm:block">Next</span>
-      <ChevronRightIcon />
+      <ChevronRightIcon className="size-5" />
     </PaginationLink>
   );
 }
@@ -101,7 +101,7 @@ function PaginationEllipsis({
       data-slot="pagination-ellipsis"
       className={cn("flex size-9 items-center justify-center", className)}
       {...props}>
-      <MoreHorizontalIcon className="size-4" />
+      <MoreHorizontalIcon className="size-5" />
       <span className="sr-only">More pages</span>
     </span>
   );
