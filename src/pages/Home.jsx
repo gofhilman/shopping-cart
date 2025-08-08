@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import extractCategories from "@/lib/extract-categories";
 import { useRef } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import Autoplay from "embla-carousel-autoplay";
@@ -20,9 +19,8 @@ import {
 } from "@/components/ui/carousel";
 
 export default function Home() {
-  const { products } = useOutletContext();
+  const { products, categoryNames, setCategories } = useOutletContext();
   const featuredProducts = [products[0], products[1], products[2]];
-  const categoryNames = extractCategories(products);
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
@@ -79,7 +77,9 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-5">
           {categoryNames.map((name, index) => (
-            <Button key={index}>{name[0].toUpperCase() + name.slice(1)}</Button>
+            <Button key={index} onClick={() => setCategories([name])}>
+              <Link to="shop">{name[0].toUpperCase() + name.slice(1)}</Link>
+            </Button>
           ))}
         </div>
       </article>

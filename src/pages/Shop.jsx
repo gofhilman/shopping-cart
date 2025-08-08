@@ -11,16 +11,14 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import extractCategories from "@/lib/extract-categories";
 import { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 const DISPLAY_NUMBER = 6;
 
 export default function Shop() {
-  const { products } = useOutletContext();
-  const categoryNames = extractCategories(products);
-  const [categories, setCategories] = useState(categoryNames);
+  const { products, categoryNames, categories, setCategories } =
+    useOutletContext();
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredProducts = products.filter((item) =>
@@ -61,18 +59,20 @@ export default function Shop() {
           ))}
         </CardContent>
       </Card>
-      <div>
+      {compartedProducts.length > 0 && (
         <div>
-          {compartedProducts[currentPage - 1].map((item) => (
-            <ProductCard key={item.id} product={item} />
-          ))}
+          <div>
+            {compartedProducts[currentPage - 1].map((item) => (
+              <ProductCard key={item.id} product={item} />
+            ))}
+          </div>
+          <SPAPagination
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            maxPage={compartedProducts.length}
+          />
         </div>
-        <SPAPagination
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          maxPage={compartedProducts.length}
-        />
-      </div>
+      )}
     </div>
   );
 }

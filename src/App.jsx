@@ -7,15 +7,25 @@ import { LoadingSpinner } from "./components/ui/loading-spinner";
 
 function App() {
   const [cart, setCart] = useState([]);
-  const products = useProductData();
+  const { products, categoryNames, categories, setCategories } =
+    useProductData();
 
   return (
     <MainLayout
       itemQuantity={cart.reduce((acc, item) => acc + item.quantity, 0)}
       products={products}
     >
-      {products ? (
-        <Outlet context={{ cart, setCart, products }} />
+      {products && categoryNames && categories && setCategories ? (
+        <Outlet
+          context={{
+            cart,
+            setCart,
+            products,
+            categoryNames,
+            categories,
+            setCategories,
+          }}
+        />
       ) : (
         <LoadingSpinner />
       )}

@@ -1,9 +1,12 @@
+import extractCategories from "@/lib/extract-categories";
 import getProducts from "@/services/get-products";
 import { useEffect, useRef, useState } from "react";
 
 export default function useProductData() {
   const [products, setProducts] = useState();
+  const [categories, setCategories] = useState();
   const didFetch = useRef(false);
+  const categoryNames = products && extractCategories(products);
 
   useEffect(() => {
     if (!didFetch.current) {
@@ -17,5 +20,12 @@ export default function useProductData() {
       })();
     }
   }, []);
-  return products;
+
+  useEffect(() => {
+    if (categoryNames && !categories) {
+      setCategories(categoryNames);
+    }
+  }, [categoryNames, categories]);
+
+  return { products, categoryNames, categories, setCategories };
 }
