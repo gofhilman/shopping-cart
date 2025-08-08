@@ -22,8 +22,7 @@ export default function SearchBar({ products, setDialogOpen, className }) {
       },
     ],
   };
-  const searchResult =
-    products && new Fuse(products, options).search(searchText);
+  const searchResult = new Fuse(products, options).search(searchText);
   // console.log(searchResult);
 
   return (
@@ -35,7 +34,7 @@ export default function SearchBar({ products, setDialogOpen, className }) {
         onChange={(event) => setSearchText(event.target.value)}
         className={className}
       />
-      {searchResult?.length > 0 && (
+      {searchResult.length > 0 && (
         <ul className="absolute inset-x-0 top-full max-h-50 overflow-y-auto border-b-1 bg-white pr-6 pb-2 pl-15 shadow-[0px_5px_5px_-5px_rgba(0,0,0,0.75)]">
           {searchResult.map((result) => (
             <li

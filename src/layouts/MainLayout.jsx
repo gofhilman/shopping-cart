@@ -5,7 +5,7 @@ export default function MainLayout({ children, itemQuantity, products }) {
   return (
     <div>
       <Header itemQuantity={itemQuantity} products={products} />
-      <div className="pt-20">{children}</div>
+      <div className="pt-20 px-12">{children}</div>
       <Footer />
     </div>
   );

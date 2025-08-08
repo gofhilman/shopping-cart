@@ -11,25 +11,29 @@ function App() {
     useProductData();
 
   return (
-    <MainLayout
-      itemQuantity={cart.reduce((acc, item) => acc + item.quantity, 0)}
-      products={products}
-    >
+    <div>
       {products && categoryNames && categories && setCategories ? (
-        <Outlet
-          context={{
-            cart,
-            setCart,
-            products,
-            categoryNames,
-            categories,
-            setCategories,
-          }}
-        />
+        <MainLayout
+          itemQuantity={cart.reduce((acc, item) => acc + item.quantity, 0)}
+          products={products}
+        >
+          <Outlet
+            context={{
+              cart,
+              setCart,
+              products,
+              categoryNames,
+              categories,
+              setCategories,
+            }}
+          />
+        </MainLayout>
       ) : (
-        <LoadingSpinner />
+        <div className="h-screen flex justify-center items-center px-25">
+          <LoadingSpinner className="w-full text-orange-300" />
+        </div>     
       )}
-    </MainLayout>
+    </div>
   );
 }
 

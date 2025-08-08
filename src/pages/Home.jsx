@@ -24,7 +24,7 @@ export default function Home() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
-    <div className="px-12">
+    <div>
       <Card className="bg-linear-to-br from-orange-300 to-amber-400">
         <div>
           <CardHeader>
@@ -63,7 +63,7 @@ export default function Home() {
           <CarouselContent>
             {featuredProducts.map((item) => (
               <CarouselItem key={item.id}>
-                <ProductCard product={item} />
+                <ProductCard product={item} className="h-full" />
               </CarouselItem>
             ))}
           </CarouselContent>

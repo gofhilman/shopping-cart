@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter } from "./ui/card";
 import { Link, useOutletContext } from "react-router-dom";
 import { Button } from "./ui/button";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, className }) {
   const { cart, setCart } = useOutletContext();
   const productQty = cart.find((item) => item.id === product.id)?.quantity ?? 0;
   const handleAddToCart = () => {
@@ -31,7 +31,7 @@ export default function ProductCard({ product }) {
   };
 
   return (
-    <Card className="gap-y-2 text-center">
+    <Card className={"gap-y-2 text-center justify-between " + className}>
       <CardContent>
         <Link
           to={
