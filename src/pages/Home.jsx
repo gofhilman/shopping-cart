@@ -8,12 +8,22 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import extractCategories from "@/lib/extract-categories";
+import { useRef } from "react";
 import { Link, useOutletContext } from "react-router-dom";
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 export default function Home() {
   const { products } = useOutletContext();
   const featuredProducts = [products[0], products[1], products[2]];
   const categoryNames = extractCategories(products);
+  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
     <div className="px-12">
@@ -41,11 +51,27 @@ export default function Home() {
         <h2 className="py-5 text-center text-2xl font-bold">
           Featured Products
         </h2>
-        <div className="flex flex-col items-center justify-center gap-5">
+        {/* <div className="flex flex-col items-center justify-center gap-5">
           {featuredProducts.map((item) => (
             <ProductCard key={item.id} product={item} />
           ))}
-        </div>
+        </div> */}
+        <Carousel
+          plugins={[plugin.current]}
+          className="w-full max-w-xs"
+          onMouseEnter={plugin.current.stop}
+          onMouseLeave={plugin.current.reset}
+        >
+          <CarouselContent>
+            {featuredProducts.map((item) => (
+              <CarouselItem key={item.id}>
+                <ProductCard product={item} />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-0 size-10" />
+          <CarouselNext className="right-0 size-10" />
+        </Carousel>
       </article>
       <article className="my-4">
         <h2 className="py-5 text-center text-2xl font-bold">
@@ -57,9 +83,11 @@ export default function Home() {
           ))}
         </div>
       </article>
-      <Card className="my-8 bg-neutral-800 text-white items-start px-6 gap-4">
+      <Card className="my-8 items-start gap-4 bg-neutral-800 px-6 text-white">
         <h2 className="text-xl font-bold">Get 20% off for your first order</h2>
-        <Button><Link to="shop">Start shopping</Link></Button>
+        <Button>
+          <Link to="shop">Start shopping</Link>
+        </Button>
       </Card>
     </div>
   );
