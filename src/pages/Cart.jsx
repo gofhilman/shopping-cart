@@ -43,25 +43,27 @@ export default function Cart() {
           <Card>
             <CardHeader>
               <CardHeader>
-                <CardTitle>Order summary</CardTitle>
+                <CardTitle className="text-xl">Order summary</CardTitle>
               </CardHeader>
-              <CardContent>
-                <div>
+              <CardContent className="text-lg/9">
+                <div className="flex justify-between">
                   <p>Subtotal</p>
                   <p>{formatRupiah(totalPrice)}</p>
                 </div>
-                <div>
+                <div className="flex justify-between">
                   <p>Shipping</p>
                   <p>Free</p>
                 </div>
                 <Separator />
-                <div>
+                <div className="flex justify-between">
                   <p>Total</p>
                   <p>{formatRupiah(totalPrice)}</p>
                 </div>
               </CardContent>
-              <CardFooter>
-                <Button>Proceed to checkout</Button>
+              <CardFooter className="pt-2">
+                <Button className="w-full bg-linear-to-br from-orange-300 to-amber-400 text-lg">
+                  Proceed to checkout
+                </Button>
               </CardFooter>
             </CardHeader>
           </Card>

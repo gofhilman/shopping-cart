@@ -7,7 +7,6 @@ import {
 } from "./ui/card";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { Link } from "react-router-dom";
 import { Separator } from "./ui/separator";
 
 export default function Footer() {
@@ -48,20 +47,20 @@ export default function Footer() {
           <Button>Subscribe</Button>
         </CardFooter>
       </Card>
-      <article className="my-5 text-center flex flex-col gap-y-2">
+      <article className="my-5 flex flex-col gap-y-2 text-center">
         <div>
           <h1 className="text-xl font-bold">ShopShop</h1>
-          <p className="text-base text-neutral-100">Your one‑stop shop for the best products at great prices.</p>
+          <p className="text-base text-neutral-100">
+            Your one‑stop shop for the best products at great prices.
+          </p>
         </div>
         <div className="flex justify-between text-sm">
           {footerInfo.map((info, index) => (
             <div key={index}>
-              <h2 className="font-bold py-1">{info.header}</h2>
-              <ul className="text-neutral-100 ">
+              <h2 className="py-1 font-bold">{info.header}</h2>
+              <ul className="text-neutral-100">
                 {info.list.map((list, index) => (
-                  <li key={index}>
-                    <Link>{list}</Link>
-                  </li>
+                  <li key={index}>{list}</li>
                 ))}
               </ul>
             </div>
@@ -69,7 +68,9 @@ export default function Footer() {
         </div>
       </article>
       <Separator />
-      <p className="text-center text-sm py-0.5">&copy; 2025 ShopShop. All right reserved.</p>
+      <p className="py-0.5 text-center text-sm">
+        &copy; 2025 ShopShop. All right reserved.
+      </p>
     </div>
   );
 }
