@@ -15,7 +15,7 @@ export default function Header({ itemQuantity, products }) {
       <div>
         <Link to="cart" className="relative">
           <ShoppingCart className="mr-4" fill="black" />
-          <div className="absolute -top-2.5 right-0.5 inline-flex size-5 items-center justify-center rounded-full bg-rose-600 text-sm text-white">
+          <div className="absolute -top-2.5 right-0.5 inline-flex size-5 items-center justify-center rounded-full bg-red-600 text-sm text-white">
             <p>{itemQuantity}</p>
           </div>
         </Link>

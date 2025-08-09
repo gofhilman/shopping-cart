@@ -19,17 +19,17 @@ export default function Cart() {
   );
 
   return (
-    <article className="flex flex-col gap-y-5 pb-7">
+    <article className="flex flex-col pb-7">
       <h2 className="text-xl font-bold text-orange-300">Your Shopping Cart</h2>
       {cart.length === 0 ? (
-        <div className="flex flex-col gap-4">
+        <div className="mt-4 flex flex-col gap-4">
           <p className="text-lg">Your cart is empty.</p>
           <Button className="text-lg">
             <Link to="/shop">Continue shopping</Link>
           </Button>
         </div>
       ) : (
-        <div className="flex flex-col gap-y-7">
+        <div className="flex flex-col gap-y-2">
           <div className="divide-y">
             {cart.map((product) => (
               <CartCard
