@@ -48,7 +48,7 @@ export default function Product() {
           Category: {product.category}
         </p>
         <p className="leading-5.5">{product.description}</p>
-        <div>
+        <div className="flex flex-col items-stretch gap-y-3 px-22">
           <div className="grid grid-cols-3 items-center">
             <Button
               onClick={() => {
@@ -64,6 +64,7 @@ export default function Product() {
               onChange={(event) => setProductQty(event.target.value)}
               min="0"
               step="1"
+              className="rounded-none"
             />
             <Button
               onClick={() => setProductQty(productQty + 1)}
@@ -73,7 +74,7 @@ export default function Product() {
             </Button>
           </div>
           <Button onClick={handleAddToCart} className="text-lg">
-            Add to cart
+            {productQty === 0 ? "Update cart" : "Add to cart"}
           </Button>
         </div>
       </div>

@@ -58,7 +58,7 @@ export default function ProductCard({ product, className }) {
             >
               -
             </Button>
-            <p className="border-t-2 border-b-2 border-black py-0.5 text-lg font-medium">
+            <p className="border-t-2 border-b-2 border-neutral-300 py-0.5 text-lg font-medium">
               {productQty}
             </p>
             <Button
