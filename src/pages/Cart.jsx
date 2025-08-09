@@ -19,54 +19,54 @@ export default function Cart() {
   );
 
   return (
-    <article>
-      <h2>Your Shopping Cart</h2>
-      <div>
-        <div>
-          {cart.length === 0 ? (
-            <div>
-              <p>Your cart is empty.</p>
-              <Button>
-                <Link to="/shop">Continue shopping</Link>
-              </Button>
-            </div>
-          ) : (
-            cart.map((product) => (
+    <article className="flex flex-col gap-y-5 pb-7">
+      <h2 className="text-xl font-bold text-orange-300">Your Shopping Cart</h2>
+      {cart.length === 0 ? (
+        <div className="flex flex-col gap-4">
+          <p className="text-lg">Your cart is empty.</p>
+          <Button className="text-lg">
+            <Link to="/shop">Continue shopping</Link>
+          </Button>
+        </div>
+      ) : (
+        <div className="flex flex-col gap-y-7">
+          <div className="divide-y">
+            {cart.map((product) => (
               <CartCard
                 key={product.id}
                 product={product}
                 cart={cart}
                 setCart={setCart}
               />
-            ))
-          )}
-        </div>
-        <Card>
-          <CardHeader>
+            ))}
+          </div>
+          <Card>
             <CardHeader>
-              <CardTitle>Order summary</CardTitle>
+              <CardHeader>
+                <CardTitle>Order summary</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div>
+                  <p>Subtotal</p>
+                  <p>{formatRupiah(totalPrice)}</p>
+                </div>
+                <div>
+                  <p>Shipping</p>
+                  <p>Free</p>
+                </div>
+                <Separator />
+                <div>
+                  <p>Total</p>
+                  <p>{formatRupiah(totalPrice)}</p>
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button>Proceed to checkout</Button>
+              </CardFooter>
             </CardHeader>
-            <CardContent>
-              <div>
-                <p>Subtotal</p>
-                <p>{formatRupiah(totalPrice)}</p>
-              </div>
-              <div>
-                <p>Shipping</p>
-                <p>Free</p>
-              </div>
-              <Separator />
-              <div>
-                <p>Total</p>
-                <p>{formatRupiah(totalPrice)}</p>
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Proceed to checkout</Button>
-            </CardFooter>
-          </CardHeader>
-        </Card>
-      </div>
+          </Card>
+        </div>
+      )}
     </article>
   );
 }
