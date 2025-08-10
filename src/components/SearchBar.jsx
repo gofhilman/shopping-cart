@@ -3,7 +3,11 @@ import { Input } from "./ui/input";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function SearchBar({ products, setDialogOpen, className }) {
+export default function SearchBar({
+  products,
+  setDialogOpen = () => {},
+  className,
+}) {
   const [searchText, setSearchText] = useState("");
   const options = {
     includeScore: true,

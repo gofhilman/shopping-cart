@@ -28,7 +28,7 @@ export default function Home() {
 
   return (
     <div>
-      <Card className="bg-linear-to-br from-orange-300 to-amber-400 lg:grid lg:grid-cols-[5fr_4fr]">
+      <Card className="bg-linear-to-br from-orange-300 to-amber-400 lg:grid lg:grid-cols-[5fr_4fr] lg:py-7 lg:px-4">
         <div className="lg:flex lg:flex-col lg:justify-center lg:gap-y-10">
           <CardHeader>
             <CardTitle className="text-xl lg:text-5xl font-bold">
