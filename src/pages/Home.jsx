@@ -27,11 +27,11 @@ export default function Home() {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
-    <div>
-      <Card className="bg-linear-to-br from-orange-300 to-amber-400 lg:grid lg:grid-cols-[5fr_4fr] lg:py-7 lg:px-4">
+    <div className="lg:flex lg:flex-col">
+      <Card className="bg-linear-to-br from-orange-300 to-amber-400 lg:grid lg:grid-cols-[5fr_4fr] lg:px-4 lg:py-7">
         <div className="lg:flex lg:flex-col lg:justify-center lg:gap-y-10">
           <CardHeader>
-            <CardTitle className="text-xl lg:text-5xl font-bold">
+            <CardTitle className="text-xl font-bold lg:text-5xl">
               Bring your wishlist to life
             </CardTitle>
           </CardHeader>
@@ -41,12 +41,12 @@ export default function Home() {
             </p>
           </CardContent>
           <CardFooter className="mt-4">
-            <Button className="lg:text-2xl lg:py-6 lg:px-8">
+            <Button className="lg:px-8 lg:py-6 lg:text-2xl">
               <Link to="shop">Shop now</Link>
             </Button>
           </CardFooter>
         </div>
-        <div className="flex justify-center items-center px-6 lg:pl-30">
+        <div className="flex items-center justify-center px-6 lg:pl-30">
           <img
             src="/shopshop.png"
             alt="ShopShop cover image"
@@ -54,8 +54,8 @@ export default function Home() {
           />
         </div>
       </Card>
-      <article className="my-4">
-        <h2 className="py-5 text-center text-2xl font-bold">
+      <article className="my-4 lg:px-40">
+        <h2 className="py-5 text-center text-2xl font-bold lg:text-4xl">
           Featured Products
         </h2>
         {/* <div className="flex flex-col items-center justify-center gap-5">
@@ -65,13 +65,13 @@ export default function Home() {
         </div> */}
         <Carousel
           plugins={[plugin.current]}
-          className="z-0 w-full max-w-xs"
+          className="z-0 w-full px-1"
           onMouseEnter={plugin.current.stop}
           onMouseLeave={plugin.current.reset}
         >
           <CarouselContent>
             {featuredProducts.map((item) => (
-              <CarouselItem key={item.id}>
+              <CarouselItem key={item.id} className="lg:basis-1/3">
                 <ProductCard product={item} className="h-full" />
               </CarouselItem>
             ))}
@@ -81,20 +81,20 @@ export default function Home() {
         </Carousel>
       </article>
       <article className="my-4">
-        <h2 className="py-5 text-center text-2xl font-bold">
+        <h2 className="py-5 text-center text-2xl font-bold lg:text-4xl">
           Shop by Category
         </h2>
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-5">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-5 lg:gap-15">
           {categoryNames.map((name, index) => (
-            <Button key={index} onClick={() => setCategories([name])}>
+            <Button key={index} onClick={() => setCategories([name])} className="lg:py-6 lg:text-lg">
               <Link to="shop">{name[0].toUpperCase() + name.slice(1)}</Link>
             </Button>
           ))}
         </div>
       </article>
-      <Card className="my-8 items-start gap-4 bg-neutral-800 px-6 text-white">
+      <Card className="my-8 items-start gap-4 bg-neutral-800 px-6 text-white lg:self-center lg:px-20">
         <h2 className="text-xl font-bold">Get 20% off for your first order</h2>
-        <Button>
+        <Button className="bg-white text-black">
           <Link to="shop">Start shopping</Link>
         </Button>
       </Card>
