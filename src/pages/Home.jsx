@@ -75,7 +75,7 @@ export default function Home() {
           <CarouselNext className="right-0 size-10" />
         </Carousel>
       </article>
-      <article className="my-4">
+      <article className="my-4 lg:px-30">
         <h2 className="py-5 text-center text-2xl font-bold lg:text-4xl">
           Shop by Category
         </h2>

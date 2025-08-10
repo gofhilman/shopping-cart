@@ -64,7 +64,7 @@ export default function Shop() {
       </Card>
       {compartedProducts.length > 0 && (
         <div className="my-5 lg:flex-1">
-          <div className="grid auto-rows-fr grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5">
+          <div className="grid auto-rows-fr grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5">
             {compartedProducts[currentPage - 1].map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}

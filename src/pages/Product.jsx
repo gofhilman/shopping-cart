@@ -33,23 +33,23 @@ export default function Product() {
   };
 
   return (
-    <article className="flex flex-col gap-y-5 pb-7">
+    <article className="flex flex-col gap-y-5 pb-7 lg:grid lg:grid-cols-[2fr_3fr] lg:gap-x-20">
       <img
         src={product.image}
         alt="Product image"
         className="rounded-lg border-2 border-orange-300 object-contain object-center p-3"
       />
-      <div className="flex flex-col gap-y-2">
-        <h2 className="text-lg/6 font-bold">{product.title}</h2>
-        <p className="text-lg font-bold text-orange-400">
+      <div className="flex flex-col gap-y-2 lg:py-2 lg:gap-y-6">
+        <h2 className="text-lg/6 font-bold lg:text-4xl">{product.title}</h2>
+        <p className="text-lg font-bold text-orange-400 lg:text-4xl">
           {formatRupiah(product.price)}
         </p>
-        <p className="text-sm font-medium text-neutral-700">
+        <p className="text-sm font-medium text-neutral-700 lg:text-base">
           Category: {product.category}
         </p>
-        <p className="leading-5.5">{product.description}</p>
-        <div className="flex flex-col items-stretch gap-y-3 px-22">
-          <div className="grid grid-cols-3 items-center">
+        <p className="leading-5.5 lg:text-lg">{product.description}</p>
+        <div className="flex flex-col items-center gap-y-3 px-22 lg:mt-auto lg:flex-row lg:justify-center lg:gap-x-15">
+          <div className="grid grid-cols-[repeat(3,50px)] items-center">
             <Button
               onClick={() => {
                 if (productQty > 0) setProductQty(productQty - 1);
@@ -73,7 +73,7 @@ export default function Product() {
               +
             </Button>
           </div>
-          <Button onClick={handleAddToCart} className="text-lg">
+          <Button onClick={handleAddToCart} className="text-lg px-7 lg:px-8">
             {productQty === 0 ? "Update cart" : "Add to cart"}
           </Button>
         </div>
