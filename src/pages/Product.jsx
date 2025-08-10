@@ -49,7 +49,7 @@ export default function Product() {
         </p>
         <p className="leading-5.5 lg:text-lg">{product.description}</p>
         <div className="flex flex-col items-center gap-y-3 px-22 lg:mt-auto lg:flex-row lg:justify-center lg:gap-x-15">
-          <div className="grid grid-cols-[repeat(3,50px)] items-center">
+          <div className="grid grid-cols-[repeat(3,60px)] items-center">
             <Button
               onClick={() => {
                 if (productQty > 0) setProductQty(productQty - 1);
