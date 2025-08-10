@@ -2,7 +2,7 @@
 
 A mock shopping website
 
-Live: 
+Live: https://shopping-cart-b3g.pages.dev/
 
 ## Tech Stack
 
