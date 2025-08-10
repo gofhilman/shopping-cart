@@ -41,9 +41,9 @@ export default function Home() {
             </p>
           </CardContent>
           <CardFooter className="mt-4">
-            <Button className="lg:px-8 lg:py-6 lg:text-2xl">
-              <Link to="shop">Shop now</Link>
-            </Button>
+            <Link to="shop">
+              <Button className="lg:px-8 lg:py-6 lg:text-2xl cursor-pointer">Shop now</Button>
+            </Link>
           </CardFooter>
         </div>
         <div className="flex items-center justify-center px-6 lg:pl-30">
@@ -81,21 +81,25 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-5 lg:gap-15">
           {categoryNames.map((name, index) => (
-            <Button
-              key={index}
-              onClick={() => setCategories([name])}
-              className="lg:py-6 lg:text-lg"
-            >
-              <Link to="shop">{name[0].toUpperCase() + name.slice(1)}</Link>
-            </Button>
+            <Link to="shop">
+              <Button
+                key={index}
+                onClick={() => setCategories([name])}
+                className="lg:py-6 lg:text-lg cursor-pointer"
+              >
+                {name[0].toUpperCase() + name.slice(1)}
+              </Button>
+            </Link>
           ))}
         </div>
       </article>
       <Card className="my-8 items-start gap-4 bg-neutral-800 px-6 text-white lg:self-center lg:px-20">
         <h2 className="text-xl font-bold">Get 20% off for your first order</h2>
-        <Button className="bg-white text-black hover:bg-neutral-50">
-          <Link to="shop">Start shopping</Link>
-        </Button>
+        <Link to="shop">
+          <Button className="bg-white text-black hover:bg-neutral-50 cursor-pointer">
+            Start shopping
+          </Button>
+        </Link>
       </Card>
     </div>
   );

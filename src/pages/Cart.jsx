@@ -24,12 +24,12 @@ export default function Cart() {
       {cart.length === 0 ? (
         <div className="mt-4 flex flex-col gap-4">
           <p className="text-lg">Your cart is empty.</p>
-          <Button className="text-lg">
+          <Button className="text-lg lg:self-start lg:px-15">
             <Link to="/shop">Continue shopping</Link>
           </Button>
         </div>
       ) : (
-        <div className="flex flex-col gap-y-2">
+        <div className="flex flex-col gap-y-2 lg:grid lg:grid-cols-[2fr_1fr] lg:gap-x-20">
           <div className="divide-y">
             {cart.map((product) => (
               <CartCard
@@ -40,7 +40,7 @@ export default function Cart() {
               />
             ))}
           </div>
-          <Card>
+          <Card className="lg:self-start">
             <CardHeader>
               <CardHeader>
                 <CardTitle className="text-xl">Order summary</CardTitle>

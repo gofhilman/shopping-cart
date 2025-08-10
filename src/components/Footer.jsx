@@ -47,7 +47,7 @@ export default function Footer() {
           <Button>Subscribe</Button>
         </CardFooter>
       </Card>
-      <article className="my-5 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-y-2 text-center">
+      <article className="my-7 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-y-2 text-center">
         <div className="lg:text-left">
           <h1 className="text-xl lg:text-2xl font-bold">ShopShop</h1>
           <p className="text-base lg:text-lg text-neutral-100">
