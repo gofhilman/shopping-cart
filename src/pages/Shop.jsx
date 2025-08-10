@@ -29,6 +29,7 @@ export default function Shop() {
     return acc;
   }, []);
   const handleCheckbox = (name) => {
+    setCurrentPage(1);
     if (categories.includes(name)) {
       setCategories(categories.filter((item) => item !== name));
     } else {
