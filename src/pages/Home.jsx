@@ -58,11 +58,6 @@ export default function Home() {
         <h2 className="py-5 text-center text-2xl font-bold lg:text-4xl">
           Featured Products
         </h2>
-        {/* <div className="flex flex-col items-center justify-center gap-5">
-          {featuredProducts.map((item) => (
-            <ProductCard key={item.id} product={item} />
-          ))}
-        </div> */}
         <Carousel
           plugins={[plugin.current]}
           className="z-0 w-full px-1"
@@ -86,7 +81,11 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-[repeat(auto-fit,minmax(120px,1fr))] gap-5 lg:gap-15">
           {categoryNames.map((name, index) => (
-            <Button key={index} onClick={() => setCategories([name])} className="lg:py-6 lg:text-lg">
+            <Button
+              key={index}
+              onClick={() => setCategories([name])}
+              className="lg:py-6 lg:text-lg"
+            >
               <Link to="shop">{name[0].toUpperCase() + name.slice(1)}</Link>
             </Button>
           ))}
@@ -94,7 +93,7 @@ export default function Home() {
       </article>
       <Card className="my-8 items-start gap-4 bg-neutral-800 px-6 text-white lg:self-center lg:px-20">
         <h2 className="text-xl font-bold">Get 20% off for your first order</h2>
-        <Button className="bg-white text-black">
+        <Button className="bg-white text-black hover:bg-neutral-50">
           <Link to="shop">Start shopping</Link>
         </Button>
       </Card>

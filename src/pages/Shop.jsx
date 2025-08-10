@@ -37,8 +37,8 @@ export default function Shop() {
   };
 
   return (
-    <div className="mb-6">
-      <Card className="gap-2 bg-linear-to-br from-orange-300 to-amber-400 px-5">
+    <div className="mb-6 lg:flex lg:gap-x-8">
+      <Card className="gap-2 bg-linear-to-br from-orange-300 to-amber-400 px-5 lg:self-start">
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Category</CardTitle>
         </CardHeader>
@@ -63,8 +63,8 @@ export default function Shop() {
         </CardContent>
       </Card>
       {compartedProducts.length > 0 && (
-        <div className="my-5">
-          <div className="grid auto-rows-fr grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-5">
+        <div className="my-5 lg:flex-1">
+          <div className="grid auto-rows-fr grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-5">
             {compartedProducts[currentPage - 1].map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}
