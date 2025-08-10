@@ -4,7 +4,7 @@ import { ShoppingCart } from "lucide-react";
 
 export default function Header({ itemQuantity, products }) {
   return (
-    <div className="fixed z-10 flex w-full items-center gap-2 border-b-1 bg-white px-3 lg:px-6 pt-4 pb-3 shadow-[0px_5px_5px_-5px_rgba(0,0,0,0.75)]">
+    <div className="fixed z-10 flex w-full items-center gap-2 border-b-1 bg-white px-3 lg:px-20 pt-4 pb-3 shadow-[0px_5px_5px_-5px_rgba(0,0,0,0.75)]">
       <h1 className="mr-auto text-2xl font-bold">
         <Link to="/">
           <span className="text-orange-300">Shop</span>

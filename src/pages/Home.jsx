@@ -28,25 +28,31 @@ export default function Home() {
 
   return (
     <div>
-      <Card className="bg-linear-to-br from-orange-300 to-amber-400">
-        <div>
+      <Card className="bg-linear-to-br from-orange-300 to-amber-400 lg:grid lg:grid-cols-[5fr_4fr]">
+        <div className="lg:flex lg:flex-col lg:justify-center lg:gap-y-10">
           <CardHeader>
-            <CardTitle className="text-xl font-bold">
+            <CardTitle className="text-xl lg:text-5xl font-bold">
               Bring your wishlist to life
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p>
+            <p className="lg:text-2xl">
               Explore the latest trends and shop your favorite products now.
             </p>
           </CardContent>
           <CardFooter className="mt-4">
-            <Button>
+            <Button className="lg:text-2xl lg:py-6 lg:px-8">
               <Link to="shop">Shop now</Link>
             </Button>
           </CardFooter>
         </div>
-        <img src="/shopshop.png" alt="ShopShop cover image" className="px-6" />
+        <div className="flex justify-center items-center px-6 lg:pl-30">
+          <img
+            src="/shopshop.png"
+            alt="ShopShop cover image"
+            className="rounded-lg"
+          />
+        </div>
       </Card>
       <article className="my-4">
         <h2 className="py-5 text-center text-2xl font-bold">
