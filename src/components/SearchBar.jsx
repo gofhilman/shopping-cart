@@ -3,7 +3,12 @@ import { Input } from "./ui/input";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function SearchBar({ products, setDialogOpen, className }) {
+export default function SearchBar({
+  products,
+  setDialogOpen,
+  className,
+  resultClassName,
+}) {
   const [searchText, setSearchText] = useState("");
   const options = {
     includeScore: true,
@@ -35,7 +40,12 @@ export default function SearchBar({ products, setDialogOpen, className }) {
         className={className}
       />
       {searchResult.length > 0 && (
-        <ul className="absolute inset-x-0 top-full max-h-50 overflow-y-auto border-b-1 bg-white pr-6 pb-2 pl-15 shadow-[0px_5px_5px_-5px_rgba(0,0,0,0.75)]">
+        <ul
+          className={
+            "absolute inset-x-0 top-full max-h-50 overflow-y-auto border-b-1 bg-white pr-6 pb-2 shadow-[0px_5px_5px_-5px_rgba(0,0,0,0.75)] " +
+            resultClassName
+          }
+        >
           {searchResult.map((result) => (
             <li
               key={result.item.id}

@@ -23,7 +23,12 @@ function MobileNav({ products }) {
           <NavigationMenu orientation="vertical" className="flex-col text-base">
             <MenuItems setDialogOpen={setDialogOpen} />
           </NavigationMenu>
-          <SearchBar products={products} setDialogOpen={setDialogOpen} className="my-2 px-0.5 text-right" />
+          <SearchBar
+            products={products}
+            setDialogOpen={setDialogOpen}
+            className="my-2 px-0.5 text-right"
+            resultClassName="pl-15"
+          />
         </div>
       )}
     </>
@@ -32,11 +37,11 @@ function MobileNav({ products }) {
 
 function DesktopNav({ products }) {
   return (
-    <div className="hidden lg:block">
+    <div className="hidden gap-x-6 px-6 lg:flex">
       <NavigationMenu>
         <MenuItems />
       </NavigationMenu>
-      <SearchBar products={products} />
+      <SearchBar products={products} className="w-75" resultClassName="pl-220" />
     </div>
   );
 }

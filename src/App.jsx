@@ -31,8 +31,8 @@ function App() {
           />
         </MainLayout>
       ) : (
-        <div className="h-screen flex justify-center items-center px-25">
-          <LoadingSpinner className="w-full text-orange-300" />
+        <div className="h-screen flex justify-center items-center">
+          <LoadingSpinner className="w-50 text-orange-300" />
         </div>     
       )}
     </div>
