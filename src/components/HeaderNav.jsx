@@ -27,7 +27,6 @@ function MobileNav({ products }) {
             products={products}
             setDialogOpen={setDialogOpen}
             className="my-2 px-0.5 text-right"
-            resultClassName="pl-15"
           />
         </div>
       )}
@@ -41,7 +40,7 @@ function DesktopNav({ products }) {
       <NavigationMenu>
         <MenuItems />
       </NavigationMenu>
-      <SearchBar products={products} className="w-75" resultClassName="pl-220" />
+      <SearchBar products={products} />
     </div>
   );
 }
