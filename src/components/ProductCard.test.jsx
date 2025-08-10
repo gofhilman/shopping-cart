@@ -9,12 +9,12 @@ import {
 import { MemoryRouter, Routes, Route, Outlet } from "react-router-dom";
 import ProductCard from "./ProductCard";
 
-// 1. Mock price formatter
+// Mock price formatter
 vi.mock("@/lib/format-rupiah", () => ({
   default: (value) => `Rp${value}`,
 }));
 
-// 2. A dummy product to drive the tests
+// A dummy product to drive the tests
 const mockProduct = {
   id: 42,
   title: "Test Product",
@@ -22,7 +22,7 @@ const mockProduct = {
   image: "/img.png",
 };
 
-// 3. Wrap ProductCard in a TestProvider that supplies cart state
+// Wrap ProductCard in a TestProvider that supplies cart state
 function TestProvider() {
   const [cart, setCart] = useState([]);
   return <Outlet context={{ cart, setCart }} />;
@@ -48,15 +48,15 @@ describe("ProductCard buttons", () => {
       </MemoryRouter>
     );
 
-    // a) Initially, "Add to cart" button is visible
+    // Initially, "Add to cart" button is visible
     const addBtn = screen.getByRole("button", { name: /add to cart/i });
     expect(addBtn).toBeInTheDocument();
 
-    // b) Click "Add to cart" → quantity should become 1
+    // Click "Add to cart", then quantity should become 1
     fireEvent.click(addBtn);
     expect(await screen.findByText("1")).toBeInTheDocument();
 
-    // c) Now the "-" and "+" buttons appear
+    // Now the "-" and "+" buttons appear
     const minusBtn = screen.getByRole("button", { name: "-" });
     const plusBtn = screen.getByRole("button", { name: "+" });
     expect(minusBtn).toBeInTheDocument();
@@ -84,15 +84,15 @@ describe("ProductCard buttons", () => {
     const minusBtn = screen.getByRole("button", { name: "-" });
     const plusBtn = screen.getByRole("button", { name: "+" });
 
-    // 1 → 2
+    // 1 to 2
     fireEvent.click(plusBtn);
     expect(await screen.findByText("2")).toBeInTheDocument();
 
-    // 2 → 1
+    // 2 to 1
     fireEvent.click(minusBtn);
     expect(await screen.findByText("1")).toBeInTheDocument();
 
-    // 1 → 0  (removes from cart, back to Add to cart)
+    // 1 to 0  (removes from cart, back to Add to cart)
     fireEvent.click(minusBtn);
     expect(
       await screen.findByRole("button", { name: /add to cart/i })

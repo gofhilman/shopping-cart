@@ -1,15 +1,14 @@
-// src/pages/Cart.test.jsx
 import { useState } from "react";
 import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Routes, Route, Outlet } from "react-router-dom";
 import Cart from "./Cart";
 
-// 1. Mock the currency formatter
+// Mock the currency formatter
 vi.mock("@/lib/format-rupiah", () => ({
   default: (value) => `Rp${value}`,
 }));
 
-// 2. Stub CartCard to just render title and quantity
+// Stub CartCard to just render title and quantity
 vi.mock("@/components/CartCard", () => ({
   default: ({ product }) => (
     <div data-testid="cart-item">
@@ -18,7 +17,7 @@ vi.mock("@/components/CartCard", () => ({
   ),
 }));
 
-// 3. Provider supplying cart state via Outlet context
+// Provider supplying cart state via Outlet context
 function TestProvider({ initialCart }) {
   const [cart, setCart] = useState(initialCart);
   return <Outlet context={{ cart, setCart }} />;
@@ -55,7 +54,7 @@ describe("Cart – empty state", () => {
 //Testing total calculation
 describe("Cart – order summary", () => {
   it("calculates subtotal and total based on cart contents", () => {
-    // 2 items: (2 × 100) + (3 × 200) = 800
+    // 2 items: (2 * 100) + (3 * 200) = 800
     const mockCart = [
       { id: 1, title: "Alpha", price: 100, quantity: 2 },
       { id: 2, title: "Beta", price: 200, quantity: 3 },
@@ -77,18 +76,15 @@ describe("Cart – order summary", () => {
     expect(items[0]).toHaveTextContent("Alpha x 2");
     expect(items[1]).toHaveTextContent("Beta x 3");
 
-    // ✅ grab every node that says “Rp800” and assert you got two of them
+    // Grab every node that says "Rp800" and assert two of them
     const priceNodes = screen.getAllByText("Rp800");
     expect(priceNodes).toHaveLength(2);
-
-    // Optionally, check they’re next to the right labels
-    // e.g. the first node should appear after “Subtotal”
     expect(priceNodes[0].previousElementSibling?.textContent).toMatch(
       /Subtotal/i,
     );
     expect(priceNodes[1].previousElementSibling?.textContent).toMatch(/Total/i);
 
-    // Shipping should be “Free”
+    // Shipping should be "Free"
     expect(screen.getByText("Free")).toBeInTheDocument();
   });
 });
