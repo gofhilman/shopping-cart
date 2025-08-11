@@ -12,24 +12,27 @@ export default function Product() {
   const [productQty, setProductQty] = useState(
     cart.find((item) => item.id === product.id)?.quantity ?? 0,
   );
+  const [clicked, setClicked] = useState(false);
 
   const handleAddToCart = () => {
-    if (productQty < 0 || !Number.isInteger(productQty)) {
+    if (+productQty < 0 || !Number.isInteger(+productQty)) {
       alert("Only non-negative whole number is allowed.");
     } else if (cart.find((item) => item.id === product.id)) {
       setCart(
         cart
           .map((item) => {
-            if (item.id === product.id) item.quantity = productQty;
+            if (item.id === product.id) item.quantity = +productQty;
             return item;
           })
           .filter((item) => item.quantity !== 0),
       );
-    } else if (productQty > 0) {
+    } else if (+productQty > 0) {
       const updatedCart = cart.concat(product);
-      updatedCart.find((item) => item.id === product.id).quantity = productQty;
+      updatedCart.find((item) => item.id === product.id).quantity = +productQty;
       setCart(updatedCart);
     }
+    setClicked(true);
+    setTimeout(() => setClicked(false), 200);
   };
 
   return (
@@ -39,7 +42,7 @@ export default function Product() {
         alt="Product image"
         className="rounded-lg border-2 border-orange-300 object-contain object-center p-3"
       />
-      <div className="flex flex-col gap-y-2 lg:py-2 lg:gap-y-6">
+      <div className="flex flex-col gap-y-2 lg:gap-y-6 lg:py-2">
         <h2 className="text-lg/6 font-bold lg:text-4xl">{product.title}</h2>
         <p className="text-lg font-bold text-orange-400 lg:text-4xl">
           {formatRupiah(product.price)}
@@ -73,7 +76,10 @@ export default function Product() {
               +
             </Button>
           </div>
-          <Button onClick={handleAddToCart} className="text-lg px-7 lg:px-8">
+          <Button
+            onClick={handleAddToCart}
+            className={`px-12 text-lg transition-transform duration-200 lg:px-15 ${clicked ? "scale-110" : ""}`}
+          >
             {productQty === 0 ? "Update cart" : "Add to cart"}
           </Button>
         </div>
