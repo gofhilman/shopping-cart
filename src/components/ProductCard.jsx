@@ -2,9 +2,12 @@ import formatRupiah from "@/lib/format-rupiah";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import { Link, useOutletContext } from "react-router-dom";
 import { Button } from "./ui/button";
+import { useState } from "react";
+import { LoadingSpinner } from "./ui/loading-spinner";
 
 export default function ProductCard({ product, className }) {
   const { cart, setCart } = useOutletContext();
+  const [loaded, setLoaded] = useState(false);
   const productQty = cart.find((item) => item.id === product.id)?.quantity ?? 0;
   const handleAddToCart = () => {
     const updatedCart = cart.concat(product);
@@ -31,18 +34,25 @@ export default function ProductCard({ product, className }) {
   };
 
   return (
-    <Card className={"gap-y-2 text-center justify-between " + className}>
+    <Card className={"justify-between gap-y-2 text-center " + className}>
       <CardContent>
         <Link
           to={
             "/product/" + encodeURIComponent(product.title + "-" + product.id)
           }
         >
-          <img
-            src={product.image}
-            alt="Product image"
-            className="aspect-4/5 rounded-lg border-2 border-orange-300 object-contain object-center p-3"
-          />
+          <div className="flex aspect-4/5 w-full items-center justify-center rounded-lg border-2 border-orange-300 p-3">
+            {!loaded && <LoadingSpinner className="w-20 text-orange-300" />}
+            <img
+              src={product.image}
+              alt="Product image"
+              className={
+                "aspect-4/5 object-contain object-center " +
+                (loaded ? "block" : "hidden")
+              }
+              onLoad={() => setLoaded(true)}
+            />
+          </div>
           <h3 className="text-lg font-bold">{product.title}</h3>
           <p className="text-lg font-bold text-orange-400">
             {formatRupiah(product.price)}
